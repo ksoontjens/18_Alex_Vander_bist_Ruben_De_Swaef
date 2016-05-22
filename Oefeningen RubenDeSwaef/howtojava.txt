@@ -1,0 +1,10 @@
+JAVA beginnen --> cd ......\labo --> addpath
+
+
+CMD //javac = compilen
+> notepad Eersteprog.java
+> javac Eersteprog.java
+> java Eersteprog ----> geeft de println
+
+
+javadoc geeft de website en heel veel shit
