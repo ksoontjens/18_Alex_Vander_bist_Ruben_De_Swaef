@@ -26,7 +26,7 @@ public class HelloTVXlet implements Xlet
         Timer tim=new Timer();
         tim.scheduleAtFixedRate(mtt, 0  , 10); // start op 0 elke 1000ms
         HScene scene=HSceneFactory.getInstance().getDefaultHScene();
-        for (int i=0;i<20;i++)
+        for (int i=0;i<1;i++)
         {
         Sprite knop=new Sprite("spaceship.png",100+30*i,100+30*i);
         sub.register(knop);
