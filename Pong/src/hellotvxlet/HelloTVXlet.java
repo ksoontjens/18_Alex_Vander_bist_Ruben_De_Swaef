@@ -11,7 +11,7 @@ import org.havi.ui.HVisible;
 
 public class HelloTVXlet implements Xlet
 {
-
+    int NumberOfBalls = 1;
     public void destroyXlet(boolean unconditional) throws XletStateChangeException {
     }
 
@@ -26,12 +26,16 @@ public class HelloTVXlet implements Xlet
         Timer tim=new Timer();
         tim.scheduleAtFixedRate(mtt, 0  , 10); // start op 0 elke 1000ms
         HScene scene=HSceneFactory.getInstance().getDefaultHScene();
-        for (int i=0;i<1;i++)
+        for (int i=0;i<NumberOfBalls;i++)
         {
-        Sprite knop=new Sprite("spaceship.png",100+30*i,100+30*i);
-        sub.register(knop);
-        scene.add(knop);
+        Sprite ball=new Sprite("ball.png",100+30*i,100+30*i);
+        sub.register(ball);
+        scene.add(ball);
         }
+        Sprite beam1=new Sprite("beam.png", 100, 100);
+        Sprite beam2=new Sprite("beam.png", 600, 100);
+        scene.add(beam1);
+        scene.add(beam2);
         scene.validate(); scene.setVisible(true);
         
         

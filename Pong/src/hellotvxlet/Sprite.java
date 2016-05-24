@@ -20,7 +20,7 @@ import org.havi.ui.HVisible;
 public class Sprite extends HIcon implements ObserverInterface {
     int x,y;
     Image img;
-    int richting=5;
+    int speed=5;
     public Sprite(String bitmap_naam, int x, int y)
     {
         super();
@@ -37,7 +37,7 @@ public class Sprite extends HIcon implements ObserverInterface {
         this.setBounds(x, y, img.getWidth(this), img.getHeight(this));
     }
     public void update(int tijd) {
-        x+=richting; if (x>700 || x < 1) richting=-richting;
+        x+=speed; if (x>600 || x < 100) speed=-speed;
         this.setBounds(x, y, img.getWidth(this), img.getHeight(this));
         this.repaint();
     }
