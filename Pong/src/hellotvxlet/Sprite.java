@@ -20,7 +20,7 @@ import org.havi.ui.HVisible;
 public class Sprite extends HIcon implements ObserverInterface {
     int x,y;
     Image img;
-    int richting=10;
+    int richting=5;
     public Sprite(String bitmap_naam, int x, int y)
     {
         super();
