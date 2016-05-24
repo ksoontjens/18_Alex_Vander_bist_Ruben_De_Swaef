@@ -5,12 +5,9 @@
 
 package hellotvxlet;
 
-import java.awt.Color;
 import java.awt.Image;
 import java.awt.MediaTracker;
 import org.havi.ui.HIcon;
-import org.havi.ui.HStaticText;
-import org.havi.ui.HTextButton;
 import org.havi.ui.HVisible;
 
 /**

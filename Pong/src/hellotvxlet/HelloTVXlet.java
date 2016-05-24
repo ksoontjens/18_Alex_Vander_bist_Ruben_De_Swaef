@@ -4,12 +4,15 @@ import java.util.Timer;
 import javax.tv.xlet.Xlet;
 import javax.tv.xlet.XletContext;
 import javax.tv.xlet.XletStateChangeException;
+import org.dvb.event.EventManager;
+import org.dvb.event.UserEvent;
+import org.dvb.event.UserEventListener;
+import org.dvb.event.UserEventRepository;
 import org.havi.ui.HScene;
 import org.havi.ui.HSceneFactory;
-import org.havi.ui.HVisible;
 
 
-public class HelloTVXlet implements Xlet
+public class HelloTVXlet implements Xlet, UserEventListener
 {
     int NumberOfBalls = 1;
     public void destroyXlet(boolean unconditional) throws XletStateChangeException {
@@ -33,8 +36,8 @@ public class HelloTVXlet implements Xlet
         sub.register(ball);
         scene.add(ball);
         }
-        Beam beam1=new Beam("beam.png", 100, 100);
-        Beam beam2=new Beam("beam.png", 600, 100);
+        Beam beam1=new Beam("beam.png", 100, 100, "left");
+        Beam beam2=new Beam("beam.png", 600, 100, "right");
         sub.register(beam1);
         sub.register(beam2);
         scene.add(beam1);
@@ -49,6 +52,9 @@ public class HelloTVXlet implements Xlet
     }
 
     public void startXlet() throws XletStateChangeException {
+    }
+
+    public void userEventReceived(UserEvent e) {
     }
     
     
