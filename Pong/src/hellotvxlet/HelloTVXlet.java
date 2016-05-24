@@ -16,15 +16,16 @@ public class HelloTVXlet implements Xlet
     }
 
     public void initXlet(XletContext ctx) throws XletStateChangeException {
-        Observer ob1=new Observer();
+        /*Observer ob1=new Observer();
         Observer ob2=new Observer();
         Observer ob3=new Observer();
+        sub.register(ob1); sub.register(ob2); sub.register(ob3); */
         Subject sub=new Subject();
-        sub.register(ob1); sub.register(ob2); sub.register(ob3);
         
         MijnTimerTask mtt=new MijnTimerTask(sub);
         Timer tim=new Timer();
         tim.scheduleAtFixedRate(mtt, 0  , 10); // start op 0 elke 1000ms
+  
         HScene scene=HSceneFactory.getInstance().getDefaultHScene();
         for (int i=0;i<NumberOfBalls;i++)
         {
@@ -32,8 +33,10 @@ public class HelloTVXlet implements Xlet
         sub.register(ball);
         scene.add(ball);
         }
-        Sprite beam1=new Sprite("beam.png", 100, 100);
-        Sprite beam2=new Sprite("beam.png", 600, 100);
+        Beam beam1=new Beam("beam.png", 100, 100);
+        Beam beam2=new Beam("beam.png", 600, 100);
+        sub.register(beam1);
+        sub.register(beam2);
         scene.add(beam1);
         scene.add(beam2);
         scene.validate(); scene.setVisible(true);
