@@ -24,7 +24,7 @@ public class Beam extends HIcon implements ObserverInterface, UserEventListener 
     int x,y;
     String direction;
     Image img;
-    int speed=2;
+    int speed=3;
     int[] keysPressed;
     public Beam(String bitmap_naam, int x, int y, String direction)
     {
