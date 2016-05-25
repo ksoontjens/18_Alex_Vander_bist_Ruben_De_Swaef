@@ -38,12 +38,12 @@ public class HelloTVXlet implements Xlet, UserEventListener
         }
         Beam beam1=new Beam("beam.png", 100, 100, "left");
         Beam beam2=new Beam("beam.png", 600, 100, "right");
-        //Beam background=new Beam("back.jpg", 0, 0, "center");
+        Beam background=new Beam("back.jpg", 0, 0, "center");
         sub.register(beam1);
         sub.register(beam2);
         scene.add(beam1);
         scene.add(beam2);
-        //scene.add(background);
+        scene.add(background);
         scene.validate(); scene.setVisible(true);
         
         
