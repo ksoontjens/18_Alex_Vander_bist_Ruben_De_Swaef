@@ -43,6 +43,7 @@ public class Beam extends HIcon implements ObserverInterface, UserEventListener 
         }
         this.setGraphicContent(img, HVisible.NORMAL_STATE);
         this.setBounds(x, y, img.getWidth(this), img.getHeight(this));
+        this.setBordersEnabled(false);
         
         UserEventRepository rep = new UserEventRepository("keys");
         rep.addAllArrowKeys();

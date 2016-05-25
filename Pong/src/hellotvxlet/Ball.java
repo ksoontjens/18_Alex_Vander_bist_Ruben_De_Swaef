@@ -28,8 +28,10 @@ public class Ball extends HIcon implements ObserverInterface, UserEventListener 
     Beam beam1;
     Beam beam2;
     int x,y;
-    boolean applyVerticalSpeed;
+    int applyVerticalSpeed;
 
+    float maxCorner = 4f;
+    
     // Constructor
     public Ball (Beam beam1, Beam beam2) {
         super();
@@ -51,6 +53,11 @@ public class Ball extends HIcon implements ObserverInterface, UserEventListener 
         this.y = 300;
         this.setGraphicContent(ballImg, HVisible.NORMAL_STATE);
         this.setBounds(this.x, this.y, ballImg.getWidth(this), ballImg.getHeight(this));
+        this.setBordersEnabled(false);
+    }   
+
+    public void setBordersEnabled(boolean enable) {
+        super.setBordersEnabled(enable);
     }
     
     public void update(int tijd) {
@@ -63,7 +70,8 @@ public class Ball extends HIcon implements ObserverInterface, UserEventListener 
         if(getCollision(beam1) >= 0) collider = beam1;
         else if(getCollision(beam2) >= 0) collider = beam2;
         
-        if(collider instanceof Beam) {
+        if(collider instanceof Beam) 
+        {
             // we collided with a beam
             
             // switch directions
@@ -74,27 +82,41 @@ public class Ball extends HIcon implements ObserverInterface, UserEventListener 
             System.out.println("We collided with " + collider.direction + " at " + collisionPercentage + "%");
             
             // check if we need to make a corner
-            if(collisionPercentage > 0f && collisionPercentage < 0.3f){
-                System.out.println("Changing corner");
-                vertSpeed -= 1f;
+            if(collisionPercentage > 0f && collisionPercentage < 0.2f){
+                if(vertSpeed > -maxCorner)vertSpeed -= 2f;
             }
-            if(collisionPercentage < 1f && collisionPercentage > 0.7f) {
-                System.out.println("Changing corner");
-                vertSpeed += 1f;
+            if(collisionPercentage < 1f && collisionPercentage > 0.8f) {
+                if(vertSpeed < maxCorner)vertSpeed += 2f;
+                
             }
+            if(collisionPercentage > 0.2f && collisionPercentage < 0.4f){
+                if(vertSpeed > -maxCorner)vertSpeed -= 1f;
+            }
+            if(collisionPercentage < 0.8f && collisionPercentage > 0.6f) {
+                if(vertSpeed < maxCorner)vertSpeed += 1f;
+                
+            }
+        }
+        
+        // Check if colliding with ceiling or floor
+        if(y < 10) {
+            vertSpeed = java.lang.Math.abs(vertSpeed);
+        }
+        else if(y > 560) {
+            vertSpeed = - java.lang.Math.abs(vertSpeed);
         }
                
         x+=speed; // move the ball hor
-        y+=vertSpeed; // move the ball vertically
-        if(applyVerticalSpeed) y+=vertSpeed;
-        else applyVerticalSpeed = true;
+        if(applyVerticalSpeed < 5)  {
+            y+=vertSpeed; applyVerticalSpeed++;
+        } else applyVerticalSpeed = 0;
         //throw new UnsupportedOperationException("Not supported yet.");
     }
     
     private float getCollision(Beam beam) {
         float state = -1f;
-        if((beam.direction == "left" && x < beam.x + beam.img.getWidth(beam)) ||
-           (beam.direction == "right" && (x + this.ballImg.getWidth(this)) > beam.x)) {
+        if((beam.direction == "left" && x < beam.x + beam.img.getWidth(beam) && (x + this.ballImg.getWidth(this)) > beam.x) ||
+           (beam.direction == "right" && (x + this.ballImg.getWidth(this)) > beam.x) && x < beam.x + beam.img.getWidth(beam)) {
            
             // horizontal hit, now check for vert
             if(y > beam.y && y < beam.y + beam.img.getHeight(beam)) {
