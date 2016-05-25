@@ -24,13 +24,15 @@ public class Beam extends HIcon implements ObserverInterface, UserEventListener 
     int x,y;
     String direction;
     Image img;
-    int speed=5;
+    int speed=2;
+    int[] keysPressed;
     public Beam(String bitmap_naam, int x, int y, String direction)
     {
         super();
         this.x=x; this.y=y;
         this.direction=direction;
-        System.out.println(direction);
+        keysPressed = new int[4];
+        //System.out.println(direction);
         img=this.getToolkit().getImage(bitmap_naam);
         MediaTracker mt=new MediaTracker(this);
         mt.addImage(img,1);
@@ -50,7 +52,33 @@ public class Beam extends HIcon implements ObserverInterface, UserEventListener 
         man.addUserEventListener((UserEventListener) this,rep);
     }
     public void update(int tijd) {
-        
+        System.out.println(keysPressed[1]);
+        if(keysPressed[0] == 1)
+        {
+            y-=speed;
+            //System.out.println("rightUp");
+            this.setBounds(x, y, img.getWidth(this), img.getHeight(this));
+            this.repaint();
+        }
+        else if(keysPressed[1] == 1)
+        {
+            y+=speed;
+            this.setBounds(x, y, img.getWidth(this), img.getHeight(this));
+            this.repaint();   
+        }
+        else if(keysPressed[2] == 1)
+        {
+            y-=speed;
+            //System.out.println("LeftUp");
+            this.setBounds(x, y, img.getWidth(this), img.getHeight(this));
+            this.repaint();           
+        }
+        else if(keysPressed[3] == 1)
+        {
+            y+=speed;
+            this.setBounds(x, y, img.getWidth(this), img.getHeight(this));
+            this.repaint();  
+        }
     }
     
     public void userEventReceived(UserEvent e) {
@@ -58,14 +86,10 @@ public class Beam extends HIcon implements ObserverInterface, UserEventListener 
             if(direction == "right"){
                 switch (e.getCode() ){
                     case HRcEvent.VK_UP:
-                        y-=speed;
-                        this.setBounds(x, y, img.getWidth(this), img.getHeight(this));
-                        this.repaint();
+                        keysPressed[0] = 1;
                         break;
                     case HRcEvent.VK_DOWN:
-                        y+=speed;
-                        this.setBounds(x, y, img.getWidth(this), img.getHeight(this));
-                        this.repaint();
+                        keysPressed[1] = 1;
                         break;
                 }
             }
@@ -73,14 +97,34 @@ public class Beam extends HIcon implements ObserverInterface, UserEventListener 
             if(direction == "left"){
                 switch (e.getCode() ){
                     case HRcEvent.VK_Z:
-                        y-=speed;
-                        this.setBounds(x, y, img.getWidth(this), img.getHeight(this));
-                        this.repaint();
+                        keysPressed[2] = 1;
                         break;
                     case HRcEvent.VK_S:
-                        y+=speed;
-                        this.setBounds(x, y, img.getWidth(this), img.getHeight(this));
-                        this.repaint();
+                        keysPressed[3] = 1;
+                        break;
+                }
+            }
+        }
+        
+        if(e.getType() == KeyEvent.KEY_RELEASED){
+            if(direction == "right"){
+                switch (e.getCode() ){
+                    case HRcEvent.VK_UP:
+                        keysPressed[0] = 0;
+                        break;
+                    case HRcEvent.VK_DOWN:
+                        keysPressed[1] = 0;
+                        break;
+                }
+            }
+            
+            if(direction == "left"){
+                switch (e.getCode() ){
+                    case HRcEvent.VK_Z:
+                        keysPressed[2] = 0;
+                        break;
+                    case HRcEvent.VK_S:
+                        keysPressed[3] = 0;
                         break;
                 }
             }
