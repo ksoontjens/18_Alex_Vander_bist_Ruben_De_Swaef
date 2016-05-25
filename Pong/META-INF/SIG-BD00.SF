@@ -1,22 +1,10 @@
 Signature-Version: 1.0
 Created-By: 1.6.0_16 (Sun Microsystems Inc.)
 BDJ-Signature-Version: 1.0
-SHA1-Digest-Manifest: AsKNJMOl9N0zbaklp/csp2ck0f4=
-
-Name: hellotvxlet/HelloTVXlet.class
-SHA1-Digest: 3r+mNp8nMLbJTENHaiBdF8lAlKU=
-
-Name: hellotvxlet/Subject.class
-SHA1-Digest: faoLPVky7+aH5kf/dBoeFgTLL7E=
-
-Name: hellotvxlet/SubjectInterface.class
-SHA1-Digest: 3fKcGK2Z5N/Gy8jEviNskoIq2rQ=
+SHA1-Digest-Manifest: d7ztlC6ObEUgqPXQMHX4Ammc4ig=
 
 Name: hellotvxlet/ObserverInterface.class
 SHA1-Digest: Bo1NMRjHMI9UCJqpsAR2BJIJ2l0=
-
-Name: hellotvxlet/bluray.HelloTVXlet.perm
-SHA1-Digest: 84ZO/rYCyy0JStmaLbg1GDVEFhQ=
 
 Name: hellotvxlet/Background.class
 SHA1-Digest: qpjtBj+s8D4CKhZBHXItdx6FUi4=
@@ -30,12 +18,27 @@ SHA1-Digest: MkNGiHrhh2nnPsPrPCEy4RrKXKk=
 Name: hellotvxlet/Sprite.class
 SHA1-Digest: D9j84hFgXIVgf+Jh6ZTEzb4P3tw=
 
+Name: hellotvxlet/HelloTVXlet.class
+SHA1-Digest: i82WRx3c3VYDv13qQAYwPBgzDtw=
+
+Name: hellotvxlet/Subject.class
+SHA1-Digest: faoLPVky7+aH5kf/dBoeFgTLL7E=
+
+Name: hellotvxlet/SubjectInterface.class
+SHA1-Digest: 3fKcGK2Z5N/Gy8jEviNskoIq2rQ=
+
+Name: hellotvxlet/bluray.HelloTVXlet.perm
+SHA1-Digest: 84ZO/rYCyy0JStmaLbg1GDVEFhQ=
+
+Name: hellotvxlet/Ball.class
+SHA1-Digest: c4+xX4imbfTsJYgU1aiwTD6Gaf8=
+
 Name: hellotvxlet/Observer.class
 SHA1-Digest: 0lAlyE97Ab0dl4ikoXy0SWdbs0s=
 
 Name: hellotvxlet/Beam.class
-SHA1-Digest: 0vSB0McZB5ERdQUJWYlOatM9Vb8=
+SHA1-Digest: /csZTzHW5NDORbyrADB5ixLh01c=
 
 Name: hellotvxlet/MijnTimerTask.class
-SHA1-Digest: 0dLkNDE9sur5Mv9KsbacydmbAlU=
+SHA1-Digest: 43RjXyzx6JVgML6+qRFadU6eGlc=
 

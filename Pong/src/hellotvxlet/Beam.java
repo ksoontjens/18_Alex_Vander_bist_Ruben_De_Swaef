@@ -21,9 +21,9 @@ import org.havi.ui.HVisible;
  * @author student
  */
 public class Beam extends HIcon implements ObserverInterface, UserEventListener {
-    int x,y;
-    String direction;
-    Image img;
+    public int x,y;
+    public String direction;
+    public Image img;
     int speed=3;
     int[] keysPressed;
     public Beam(String bitmap_naam, int x, int y, String direction)
@@ -46,13 +46,13 @@ public class Beam extends HIcon implements ObserverInterface, UserEventListener 
         
         UserEventRepository rep = new UserEventRepository("keys");
         rep.addAllArrowKeys();
-        rep.addKey('Z');
-        rep.addKey('S');
+        rep.addKey('E');
+        rep.addKey('D');
         EventManager man = EventManager.getInstance();
         man.addUserEventListener((UserEventListener) this,rep);
     }
     public void update(int tijd) {
-        System.out.println(keysPressed[1]);
+        //System.out.println(keysPressed[1]);
         if(keysPressed[0] == 1 | keysPressed[2] == 1)
         {
             y-=speed;
@@ -83,10 +83,10 @@ public class Beam extends HIcon implements ObserverInterface, UserEventListener 
             
             if(direction == "left"){
                 switch (e.getCode() ){
-                    case HRcEvent.VK_Z:
+                    case HRcEvent.VK_E:
                         keysPressed[2] = 1;
                         break;
-                    case HRcEvent.VK_S:
+                    case HRcEvent.VK_D:
                         keysPressed[3] = 1;
                         break;
                 }
@@ -107,10 +107,10 @@ public class Beam extends HIcon implements ObserverInterface, UserEventListener 
             
             if(direction == "left"){
                 switch (e.getCode() ){
-                    case HRcEvent.VK_Z:
+                    case HRcEvent.VK_E:
                         keysPressed[2] = 0;
                         break;
-                    case HRcEvent.VK_S:
+                    case HRcEvent.VK_D:
                         keysPressed[3] = 0;
                         break;
                 }

@@ -15,6 +15,7 @@ import org.havi.ui.HSceneFactory;
 public class HelloTVXlet implements Xlet, UserEventListener
 {
     int NumberOfBalls = 1;
+    
     public void destroyXlet(boolean unconditional) throws XletStateChangeException {
     }
 
@@ -30,21 +31,25 @@ public class HelloTVXlet implements Xlet, UserEventListener
         tim.scheduleAtFixedRate(mtt, 0  , 10); // start op 0 elke 1000ms
   
         HScene scene=HSceneFactory.getInstance().getDefaultHScene();
-        for (int i=0;i<NumberOfBalls;i++)
-        {
-        Sprite ball=new Sprite("ball.png",100+30*i,100+30*i);
-        sub.register(ball);
-        scene.add(ball);
-        }
+        
         Beam beam1=new Beam("beam.png", 100, 100, "left");
         Beam beam2=new Beam("beam.png", 600, 100, "right");
-        Beam background=new Beam("back.jpg", 0, 0, "center");
+        
         sub.register(beam1);
         sub.register(beam2);
+        
         scene.add(beam1);
         scene.add(beam2);
-        scene.add(background);
-        scene.validate(); scene.setVisible(true);
+        
+        for (int i=0;i<NumberOfBalls;i++)
+        {
+            Ball ball=new Ball(beam1, beam2);
+            sub.register(ball);
+            scene.add(ball);
+        }
+        
+        scene.validate(); 
+        scene.setVisible(true);
         
         
         

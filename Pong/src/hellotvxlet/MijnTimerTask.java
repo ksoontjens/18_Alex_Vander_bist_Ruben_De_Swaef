@@ -14,8 +14,12 @@ import java.util.TimerTask;
 public class MijnTimerTask extends TimerTask {
     Subject su=null;  int tijd=0;   
     public MijnTimerTask(Subject s)
-    {      su=s;       }
-    public void run() {
+    {
+        su=s;       
+    }
+    
+    public void run() 
+    {
        tijd++;
        if (su!=null) su.update_observers(tijd);
     }
