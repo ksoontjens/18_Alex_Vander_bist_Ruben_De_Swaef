@@ -1,13 +1,13 @@
 package hellotvxlet;
 
+import java.awt.Image;
+import java.awt.MediaTracker;
 import java.util.Timer;
 import javax.tv.xlet.Xlet;
 import javax.tv.xlet.XletContext;
 import javax.tv.xlet.XletStateChangeException;
-import org.dvb.event.EventManager;
 import org.dvb.event.UserEvent;
 import org.dvb.event.UserEventListener;
-import org.dvb.event.UserEventRepository;
 import org.havi.ui.HScene;
 import org.havi.ui.HSceneFactory;
 
@@ -38,10 +38,12 @@ public class HelloTVXlet implements Xlet, UserEventListener
         }
         Beam beam1=new Beam("beam.png", 100, 100, "left");
         Beam beam2=new Beam("beam.png", 600, 100, "right");
+        //Beam background=new Beam("back.jpg", 0, 0, "center");
         sub.register(beam1);
         sub.register(beam2);
         scene.add(beam1);
         scene.add(beam2);
+        //scene.add(background);
         scene.validate(); scene.setVisible(true);
         
         
