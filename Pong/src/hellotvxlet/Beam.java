@@ -53,31 +53,18 @@ public class Beam extends HIcon implements ObserverInterface, UserEventListener 
     }
     public void update(int tijd) {
         System.out.println(keysPressed[1]);
-        if(keysPressed[0] == 1)
+        if(keysPressed[0] == 1 | keysPressed[2] == 1)
         {
             y-=speed;
             //System.out.println("rightUp");
             this.setBounds(x, y, img.getWidth(this), img.getHeight(this));
             this.repaint();
         }
-        else if(keysPressed[1] == 1)
+        else if(keysPressed[1] == 1 | keysPressed[3] == 1)
         {
             y+=speed;
             this.setBounds(x, y, img.getWidth(this), img.getHeight(this));
             this.repaint();   
-        }
-        else if(keysPressed[2] == 1)
-        {
-            y-=speed;
-            //System.out.println("LeftUp");
-            this.setBounds(x, y, img.getWidth(this), img.getHeight(this));
-            this.repaint();           
-        }
-        else if(keysPressed[3] == 1)
-        {
-            y+=speed;
-            this.setBounds(x, y, img.getWidth(this), img.getHeight(this));
-            this.repaint();  
         }
     }
     
