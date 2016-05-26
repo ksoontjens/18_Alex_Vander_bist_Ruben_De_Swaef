@@ -64,8 +64,8 @@ public class HelloTVXlet implements Xlet, UserEventListener, HBackgroundImageLis
             System.out.println(ex.toString());
         }
         
-        Beam beam1=new Beam("beam.png", 100, 100, "left");
-        Beam beam2=new Beam("beam.png", 600, 100, "right");
+        Beam beam1=new Beam("beam.png", 100, 200, "left");
+        Beam beam2=new Beam("beam.png", 600, 200, "right");
         
         sub.register(beam1);
         sub.register(beam2);

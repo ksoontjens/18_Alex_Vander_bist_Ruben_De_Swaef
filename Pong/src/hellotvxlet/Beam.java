@@ -69,13 +69,13 @@ public class Beam extends HIcon implements ObserverInterface, UserEventListener 
             this.repaint();   
         }
         
-        if(y < 0) {
-            y=0;
+        if(y < 35) {
+            y=35;
             this.setBounds(x, y, img.getWidth(this), img.getHeight(this));
             this.repaint(); 
         }
-        else if(y > 560-beamHeight) {
-            y=560-beamHeight;
+        else if(y > 525-beamHeight) {
+            y=525-beamHeight;
             this.setBounds(x, y, img.getWidth(this), img.getHeight(this));
             this.repaint(); 
         }

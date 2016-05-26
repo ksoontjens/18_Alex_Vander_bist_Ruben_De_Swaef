@@ -47,7 +47,7 @@ public class Ball extends HIcon implements ObserverInterface, UserEventListener 
         }
         
         this.x = 300;
-        this.y = 300;
+        this.y = 250;
         this.setGraphicContent(ballImg, HVisible.NORMAL_STATE);
         this.setBounds(this.x, this.y, ballImg.getWidth(this), ballImg.getHeight(this));
         this.setBordersEnabled(false);
@@ -98,23 +98,23 @@ public class Ball extends HIcon implements ObserverInterface, UserEventListener 
         }
         
         // Check if colliding with ceiling or floor
-        if(y < 10) {
+        if(y < 30) {
             vertSpeed = java.lang.Math.abs(vertSpeed);
         }
-        else if(y > 560) {
+        else if(y > 530) {
             vertSpeed = - java.lang.Math.abs(vertSpeed);
         }
         
         //SCORE
-        if(x<0 | x>700) {
+        if(x<20 | x>680) {
             if(x<0){
                 this.Score[1]++;
             }
-            if(x>700){
+            if(x>680){
                 this.Score[0]++;
             }
             this.x = 300;
-            this.y = 300;
+            this.y = 250;
             this.speed = 3;
             this.vertSpeed = 0f;
         }
