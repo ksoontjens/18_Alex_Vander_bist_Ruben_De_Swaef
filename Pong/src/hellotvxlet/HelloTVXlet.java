@@ -32,7 +32,7 @@ public class HelloTVXlet implements Xlet, UserEventListener, HBackgroundImageLis
     private HBackgroundConfigTemplate bgTemplate;
     private HStillImageBackgroundConfiguration bgConfiguration;
     private HBackgroundDevice bgDevice;
-    private HBackgroundImage background=new HBackgroundImage("back1.m2v");
+    private HBackgroundImage background=new HBackgroundImage("back3.m2v");
     
     public void destroyXlet(boolean unconditional) throws XletStateChangeException {
         background.flush();
