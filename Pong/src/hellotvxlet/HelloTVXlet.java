@@ -1,8 +1,5 @@
 package hellotvxlet;
 
-import java.awt.Image;
-import java.awt.MediaTracker;
-import java.io.IOException;
 import java.util.Timer;
 import javax.tv.xlet.Xlet;
 import javax.tv.xlet.XletContext;
@@ -11,12 +8,9 @@ import org.davic.resources.ResourceClient;
 import org.davic.resources.ResourceProxy;
 import org.dvb.event.UserEvent;
 import org.dvb.event.UserEventListener;
-import org.dvb.ui.DVBColor;
 import org.havi.ui.HBackgroundConfigTemplate;
 import org.havi.ui.HBackgroundDevice;
 import org.havi.ui.HBackgroundImage;
-import org.havi.ui.HConfigurationException;
-import org.havi.ui.HPermissionDeniedException;
 import org.havi.ui.HScene;
 import org.havi.ui.HSceneFactory;
 import org.havi.ui.HScreen;
@@ -39,16 +33,11 @@ public class HelloTVXlet implements Xlet, UserEventListener, HBackgroundImageLis
     }
 
     public void initXlet(XletContext ctx) throws XletStateChangeException {
-        /*Observer ob1=new Observer();
-        Observer ob2=new Observer();
-        Observer ob3=new Observer();
-        sub.register(ob1); sub.register(ob2); sub.register(ob3); */
-        Subject sub=new Subject();
         
-        MijnTimerTask mtt=new MijnTimerTask(sub);
-        Timer tim=new Timer();
-        tim.scheduleAtFixedRate(mtt, 0  , 10); // start op 0 elke 1000ms
+        // Tijd = Subject
+        Subject sub=new Subject();
   
+        // Create scene + background
         HScene scene=HSceneFactory.getInstance().getDefaultHScene();
         screen = HScreen.getDefaultHScreen ( ) ;
         bgDevice = screen.getDefaultHBackgroundDevice ( ) ;
@@ -64,8 +53,9 @@ public class HelloTVXlet implements Xlet, UserEventListener, HBackgroundImageLis
             System.out.println(ex.toString());
         }
         
-        Beam beam1=new Beam("beam.png", 100, 200, "left");
-        Beam beam2=new Beam("beam.png", 600, 200, "right");
+        // Add beams that observe the timer
+        Beam beam1=new Beam("beam.png", 100, 200, "left",sub);
+        Beam beam2=new Beam("beam.png", 600, 200, "right",sub);
         
         sub.register(beam1);
         sub.register(beam2);
@@ -73,7 +63,7 @@ public class HelloTVXlet implements Xlet, UserEventListener, HBackgroundImageLis
         scene.add(beam1);
         scene.add(beam2);
         
-        
+        // Add balls that observe the timer
         for (int i=0;i<NumberOfBalls;i++)
         {
             Ball ball=new Ball(beam1, beam2);
@@ -81,6 +71,7 @@ public class HelloTVXlet implements Xlet, UserEventListener, HBackgroundImageLis
             scene.add(ball);
         }
         
+        // Show the scene
         scene.validate(); 
         scene.setVisible(true);
         

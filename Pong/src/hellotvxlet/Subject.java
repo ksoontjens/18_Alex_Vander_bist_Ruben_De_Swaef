@@ -6,6 +6,7 @@
 package hellotvxlet;
 
 import java.util.ArrayList;
+import java.util.Timer;
 
 /**
  *
@@ -14,6 +15,13 @@ import java.util.ArrayList;
 public class Subject implements SubjectInterface {
 
     ArrayList subscribers=new ArrayList();
+    
+    public Subject () {
+        // Subject laat observers iedere x ms weten welke tijd het is. (hammertime)
+        MijnTimerTask mtt=new MijnTimerTask(this);
+        Timer tim=new Timer();
+        tim.scheduleAtFixedRate(mtt, 0  , 10); // start op 0 elke 1000ms
+    }
     
     public void register(ObserverInterface ob) {
         subscribers.add(ob);

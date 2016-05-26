@@ -27,9 +27,11 @@ public class Beam extends HIcon implements ObserverInterface, UserEventListener 
     int speed=3;
     int[] keysPressed;
     int beamHeight=100;
-    public Beam(String bitmap_naam, int x, int y, String direction)
+    public Score score;
+    public Beam(String bitmap_naam, int x, int y, String direction, Subject sub)
     {
         super();
+        
         this.x=x; this.y=y;
         this.direction=direction;
         keysPressed = new int[4];
@@ -52,6 +54,11 @@ public class Beam extends HIcon implements ObserverInterface, UserEventListener 
         rep.addKey('D');
         EventManager man = EventManager.getInstance();
         man.addUserEventListener((UserEventListener) this,rep);
+        
+        
+        // New Score text
+        score = new Score(x,40);
+        sub.register(score);
     }
     public void update(int tijd) {
         //System.out.println(keysPressed[1]);

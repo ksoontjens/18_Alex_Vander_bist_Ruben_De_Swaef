@@ -25,7 +25,6 @@ public class Ball extends HIcon implements ObserverInterface, UserEventListener 
     Beam beam2;
     int x,y;
     int applyVerticalSpeed;
-    int[] Score;
     
     float maxCorner = 4f;
     
@@ -52,7 +51,6 @@ public class Ball extends HIcon implements ObserverInterface, UserEventListener 
         this.setBounds(this.x, this.y, ballImg.getWidth(this), ballImg.getHeight(this));
         this.setBordersEnabled(false);
         
-        Score = new int[2];
     }   
 
     public void setBordersEnabled(boolean enable) {
@@ -106,12 +104,13 @@ public class Ball extends HIcon implements ObserverInterface, UserEventListener 
         }
         
         //SCORE
-        if(x<20 | x>680) {
+        if(x<0 | x>680) {
             if(x<0){
-                this.Score[1]++;
+                beam2.score.score ++;
+                       
             }
             if(x>680){
-                this.Score[0]++;
+                beam1.score.score ++;
             }
             this.x = 300;
             this.y = 250;
