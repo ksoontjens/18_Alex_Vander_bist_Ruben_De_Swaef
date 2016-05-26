@@ -7,12 +7,8 @@ package hellotvxlet;
 
 import java.awt.Image;
 import java.awt.MediaTracker;
-import java.awt.event.KeyEvent;
-import org.bluray.ui.event.HRcEvent;
-import org.dvb.event.EventManager;
 import org.dvb.event.UserEvent;
 import org.dvb.event.UserEventListener;
-import org.dvb.event.UserEventRepository;
 import org.havi.ui.HIcon;
 import org.havi.ui.HVisible;
 
@@ -29,7 +25,8 @@ public class Ball extends HIcon implements ObserverInterface, UserEventListener 
     Beam beam2;
     int x,y;
     int applyVerticalSpeed;
-
+    int[] Score;
+    
     float maxCorner = 4f;
     
     // Constructor
@@ -54,6 +51,8 @@ public class Ball extends HIcon implements ObserverInterface, UserEventListener 
         this.setGraphicContent(ballImg, HVisible.NORMAL_STATE);
         this.setBounds(this.x, this.y, ballImg.getWidth(this), ballImg.getHeight(this));
         this.setBordersEnabled(false);
+        
+        Score = new int[2];
     }   
 
     public void setBordersEnabled(boolean enable) {
@@ -106,9 +105,18 @@ public class Ball extends HIcon implements ObserverInterface, UserEventListener 
             vertSpeed = - java.lang.Math.abs(vertSpeed);
         }
         
-        //check if ball went out of the field
+        //SCORE
         if(x<0 | x>700) {
-            System.out.println("out");
+            if(x<0){
+                this.Score[1]++;
+            }
+            if(x>700){
+                this.Score[0]++;
+            }
+            this.x = 300;
+            this.y = 300;
+            this.speed = 3;
+            this.vertSpeed = 0f;
         }
                
         x+=speed; // move the ball hor
