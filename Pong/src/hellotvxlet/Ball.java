@@ -105,6 +105,11 @@ public class Ball extends HIcon implements ObserverInterface, UserEventListener 
         else if(y > 560) {
             vertSpeed = - java.lang.Math.abs(vertSpeed);
         }
+        
+        //check if ball went out of the field
+        if(x<0 | x>700) {
+            System.out.println("out");
+        }
                
         x+=speed; // move the ball hor
         if(applyVerticalSpeed < 5)  {

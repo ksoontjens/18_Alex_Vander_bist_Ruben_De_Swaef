@@ -11,6 +11,7 @@ import org.davic.resources.ResourceClient;
 import org.davic.resources.ResourceProxy;
 import org.dvb.event.UserEvent;
 import org.dvb.event.UserEventListener;
+import org.dvb.ui.DVBColor;
 import org.havi.ui.HBackgroundConfigTemplate;
 import org.havi.ui.HBackgroundDevice;
 import org.havi.ui.HBackgroundImage;
@@ -31,7 +32,7 @@ public class HelloTVXlet implements Xlet, UserEventListener, HBackgroundImageLis
     private HBackgroundConfigTemplate bgTemplate;
     private HStillImageBackgroundConfiguration bgConfiguration;
     private HBackgroundDevice bgDevice;
-    private HBackgroundImage background=new HBackgroundImage("pizza1.m2v");
+    private HBackgroundImage background=new HBackgroundImage("back.m2v");
     
     public void destroyXlet(boolean unconditional) throws XletStateChangeException {
         background.flush();
