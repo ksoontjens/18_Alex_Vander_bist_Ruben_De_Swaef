@@ -21,3 +21,10 @@ nb-configuration.xml
 *.jar
 *.war
 *.ear
+
+META-INF/
+app.discroot.crt
+appcert.cer
+appcert.csr
+hellotvxlet.HelloTVXlet.zip
+keystore.store
