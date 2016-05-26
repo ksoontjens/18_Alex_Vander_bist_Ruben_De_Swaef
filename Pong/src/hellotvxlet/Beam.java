@@ -26,6 +26,7 @@ public class Beam extends HIcon implements ObserverInterface, UserEventListener 
     public Image img;
     int speed=3;
     int[] keysPressed;
+    int beamHeight=100;
     public Beam(String bitmap_naam, int x, int y, String direction)
     {
         super();
@@ -66,6 +67,17 @@ public class Beam extends HIcon implements ObserverInterface, UserEventListener 
             y+=speed;
             this.setBounds(x, y, img.getWidth(this), img.getHeight(this));
             this.repaint();   
+        }
+        
+        if(y < 0) {
+            y=0;
+            this.setBounds(x, y, img.getWidth(this), img.getHeight(this));
+            this.repaint(); 
+        }
+        else if(y > 560-beamHeight) {
+            y=560-beamHeight;
+            this.setBounds(x, y, img.getWidth(this), img.getHeight(this));
+            this.repaint(); 
         }
     }
     
