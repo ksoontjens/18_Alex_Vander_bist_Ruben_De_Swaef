@@ -54,8 +54,8 @@ public class HelloTVXlet implements Xlet, UserEventListener, HBackgroundImageLis
         }
         
         // Add beams that observe the timer
-        Beam beam1=new Beam("beam.png", 100, 200, "left",sub);
-        Beam beam2=new Beam("beam.png", 600, 200, "right",sub);
+        Beam beam1=new Beam("beamED.png", 100, 200, "left",sub);
+        Beam beam2=new Beam("beamA.png", 600, 200, "right",sub);
         
         sub.register(beam1);
         sub.register(beam2);

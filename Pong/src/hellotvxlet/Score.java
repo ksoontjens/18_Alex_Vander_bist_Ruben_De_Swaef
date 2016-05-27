@@ -41,7 +41,7 @@ public class Score extends HComponent implements ObserverInterface {
 
     public void update(int tijd) {
         // Tijd updated
-        System.out.println(score);
+        //System.out.println(score);
         hst.setTextContent(Integer.toString(score), HStaticText.NORMAL_STATE);
     }
     
